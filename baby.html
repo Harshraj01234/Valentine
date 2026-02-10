@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    h1 {
+        color: #fff;
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .container {
+        z-index: 10;
+    }
+
+    button {
+        padding: 12px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 10px;
+        transition: 0.3s;
+    }
+
+    #yesBtn {
+        background: #ff4b5c;
+        color: white;
+    }
+
+    #noBtn {
+        background: white;
+        color: #ff4b5c;
+        position: absolute;
+    }
+
+    #message {
+        display: none;
+        color: white;
+        font-size: 2rem;
+        margin-top: 20px;
+    }
+
+    /* Heart animation */
+    .heart {
+        position: absolute;
+        color: rgba(255, 0, 80, 0.8);
+        font-size: 20px;
+        animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(100vh) scale(1);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-10vh) scale(1.5);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Will you be my Valentine? ❤️</h1>
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO 😜</button>
+
+    <div id="message">
+        I knew you would say YES 💕<br>
+        I Wanted you to know that i love you so much baby❤️<br>
+        You look beautiful without even trying. Your smile, the way you talk, the calm you have — it all just feels nice. Sometimes even seeing you or your photo is enough to fix my mood ❤️
+
+And honestly, since you came into my life, things have started feeling better. Talking to you makes everything lighter. You’re in my good thoughts , and honestly in my mischievous ones too — my focus just stays on you. Being with you feels right, feels comfortable. I love you so much baby❤️<br>
+        Let's meet today at <b>Sonorous</b> 🏨<br>
+        At <b>13:25 PM</b> ❤️
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+
+    // Move NO button when mouse comes near
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    // YES button click
+    yesBtn.addEventListener("click", () => {
+        message.style.display = "block";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+    });
+
+    // Floating hearts
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
